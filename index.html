@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trato Agro – Cuidando do Fazendeiro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ======================== NAVBAR ======================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-trato">Trato</span><span class="logo-agro">Agro</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="#sobre" class="nav-link">Sobre Nós</a></li>
+          <li class="dropdown">
+            <a href="#debitos" class="nav-link dropdown-toggle" id="debitosToggle">
+              Débitos <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+            <ul class="dropdown-menu" id="debitosMenu">
+              <li><a href="#itr" class="dropdown-item">ITR</a></li>
+            </ul>
+          </li>
+          <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
+          <li><a href="#faq" class="nav-link">Perguntas Frequentes</a></li>
+          <li><a href="#form-cta" class="nav-btn">Consultar Grátis</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======================== HERO ======================== -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Regularize seu ITR de forma simples e parcelada</h1>
+        <p class="hero-sub">Consulte seus débitos de ITR e pague em até 12x no cartão.</p>
+        <ul class="hero-checks">
+          <li><span class="check-icon">&#10003;</span> Processo 100% digital</li>
+          <li><span class="check-icon">&#10003;</span> Sem burocracia</li>
+          <li><span class="check-icon">&#10003;</span> Quitação oficial com comprovante</li>
+        </ul>
+        <a href="#form-cta" class="btn btn-primary">Consultar meus débitos agora</a>
+      </div>
+
+      <!-- FORM CARD -->
+      <div class="form-card" id="form-cta">
+        <h2 class="form-title">Consulte Grátis seus débitos de ITR</h2>
+        <p class="form-sub">Com o Trato, você consulta todos os débitos passados do ITR por meio da sua Inscricão Rural e paga os débitos de forma simples.</p>
+        <form class="form-body" id="consultaForm" novalidate>
+
+          <!-- Tipo de devedor -->
+          <div class="form-group">
+            <label class="form-label-group">Tipo de devedor</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="tipoDevedor" value="pf" id="tipoPF" checked />
+                <span class="radio-custom"></span>
+                Pessoa Física
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="tipoDevedor" value="pj" id="tipoPJ" />
+                <span class="radio-custom"></span>
+                Pessoa Jurídica
+              </label>
+            </div>
+          </div>
+
+          <!-- Campos Pessoa Física -->
+          <div id="fieldsPF">
+            <div class="form-group">
+              <label for="nomePF">Nome completo</label>
+              <input type="text" id="nomePF" name="nomePF" placeholder="Seu nome completo" />
+              <span class="field-error" id="nomePFError">Informe o nome completo.</span>
+            </div>
+            <div class="form-group">
+              <label for="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" />
+              <span class="field-error" id="cpfError">Informe um CPF válido.</span>
+            </div>
+          </div>
+
+          <!-- Campos Pessoa Jurídica -->
+          <div id="fieldsPJ" style="display:none">
+            <div class="form-group">
+              <label for="cnpj">CNPJ</label>
+              <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" inputmode="numeric" />
+              <span class="field-error" id="cnpjError">Informe um CNPJ válido.</span>
+            </div>
+          </div>
+
+          <!-- Campos comuns -->
+          <div class="form-group">
+            <label for="celular">Celular</label>
+            <input type="tel" id="celular" name="celular" placeholder="(00) 00000-0000" />
+            <span class="field-error" id="celularError">Informe um celular válido.</span>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com.br" />
+            <span class="field-error" id="emailError">Informe um e-mail válido.</span>
+          </div>
+
+          <p class="form-security-note">
+            <svg width="13" height="16" viewBox="0 0 13 16" fill="none"><path d="M6.5 0L0 3V8C0 11.55 2.78 14.88 6.5 16C10.22 14.88 13 11.55 13 8V3L6.5 0Z" fill="#5b8c51"/></svg>
+            Você receberá um código que garantirá a segurança dos seus dados.
+          </p>
+          <button type="submit" class="btn btn-primary btn-block">Consultar Débitos</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">&#10003;</div>
+          <h3>Solicitacão enviada!</h3>
+          <p>Nossa equipe entrará em contato em breve com seus débitos de ITR.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== COMO FUNCIONA ======================== -->
+  <section class="section section-light" id="como-funciona">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Como Funciona</h2>
+        <p class="section-tagline">Simples. Rápido. Seguro.</p>
+        <p class="section-desc">Na Trato Agro, o processo é 100% digital, rápido e transparente.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Informe sua Inscricão Rural</h3>
+          <p>Você informa o número da inscricão do imóvel rural (NIRF/ITR), seu celular e e-mail. Nossa equipe realiza a consulta dos débitos federais vinculados ao imóvel.</p>
+          <div class="step-badge">
+            <svg width="13" height="16" viewBox="0 0 13 16" fill="none"><path d="M6.5 0L0 3V8C0 11.55 2.78 14.88 6.5 16C10.22 14.88 13 11.55 13 8V3L6.5 0Z" fill="currentColor"/></svg>
+            Dados tratados com segurança
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Consultamos seus Débitos</h3>
+          <p>Verificamos ITR em atraso, ITR do exercício 2026 (quando disponível) e multas e encargos atualizados. Você recebe o valor total detalhado antes de qualquer contratacão.</p>
+          <div class="step-badge step-badge--yellow">Transparência total</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Escolha o Parcelamento</h3>
+          <p>Após a consulta, você poderá escolher pagamento à vista ou parcelamento em até 12x no cartão de crédito. Você visualiza valor total, parcelas, taxa aplicada e custo efetivo. Sem letras miúdas.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3>Pagamento no Cartão</h3>
+          <p>O pagamento é realizado diretamente no cartão de crédito – pode ser no seu cartão ou no cartão de terceiro (com autorizacão formal). O parcelamento é processado pelo emissor do cartão.</p>
+        </div>
+        <div class="step-card step-card--wide">
+          <div class="step-num">5</div>
+          <h3>Quitamos a Guia para Você</h3>
+          <p>Após a confirmacão do pagamento, realizamos a quitacão oficial do débito, emitimos e enviamos o comprovante. Você mantém sua propriedade regularizada.</p>
+          <div class="step-badge">Simples assim.</div>
+        </div>
+      </div>
+
+      <div class="benefits-row">
+        <div class="benefit-item"><span class="benefit-check">&#10003;</span> Evita multas futuras</div>
+        <div class="benefit-item"><span class="benefit-check">&#10003;</span> Regulariza sua situacão fiscal</div>
+        <div class="benefit-item"><span class="benefit-check">&#10003;</span> Facilita acesso a crédito rural</div>
+        <div class="benefit-item"><span class="benefit-check">&#10003;</span> Processo digital e rápido</div>
+        <div class="benefit-item"><span class="benefit-check">&#10003;</span> Parcelamento acessível</div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#form-cta" class="btn btn-primary">Quero regularizar agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== POR QUE REGULARIZAR ======================== -->
+  <section class="section section-dark" id="por-que">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title section-title--light">Por Que Regularizar seu ITR?</h2>
+        <p class="section-desc section-desc--light">Manter o ITR em dia é essencial para proteger seu patrimônio e seu negócio.</p>
+      </div>
+      <div class="two-col">
+        <div class="why-list">
+          <div class="why-item">
+            <span class="why-check">&#10003;</span>
+            <div>
+              <strong>Evitar multas e encargos</strong>
+              <p>Débitos de ITR crescem todo mês com a taxa Selic. Quanto mais tempo passa, maior o valor a pagar.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <span class="why-check">&#10003;</span>
+            <div>
+              <strong>Evitar restricões fiscais</strong>
+              <p>Propriedades com ITR pendente ficam travadas e não permitem operacões cartoriais ou fiscais.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <span class="why-check">&#10003;</span>
+            <div>
+              <strong>Facilitar acesso a crédito rural</strong>
+              <p>Bancos, Pronaf e cooperativas exigem regularidade fiscal para conceder financiamentos e custeios.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <span class="why-check">&#10003;</span>
+            <div>
+              <strong>Manter a propriedade regular</strong>
+              <p>ITR em dia permite vender, transferir, renovar CCIR e realizar inventários sem impedimento.</p>
+            </div>
+          </div>
+        </div>
+        <div class="why-highlight">
+          <blockquote class="why-quote">
+            "Regularidade fiscal é segurança patrimonial."
+          </blockquote>
+          <a href="#form-cta" class="btn btn-yellow">Consultar meus débitos agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PARCELAMENTO ======================== -->
+  <section class="section section-light" id="parcelamento">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Parcelamento Facilitado</h2>
+        <p class="section-desc">Sem letras miúdas. Sem surpresas.</p>
+      </div>
+      <div class="parcela-grid">
+        <div class="parcela-card">
+          <div class="parcela-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#eddd5e"/><rect x="8" y="12" width="24" height="18" rx="2" stroke="#404a3d" stroke-width="2"/><path d="M8 18H32" stroke="#404a3d" stroke-width="2"/><path d="M13 24H17" stroke="#404a3d" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>No seu cartão</h3>
+          <p>Use seu cartão de crédito para parcelar o valor do ITR em até 12 vezes.</p>
+        </div>
+        <div class="parcela-card">
+          <div class="parcela-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#eddd5e"/><rect x="8" y="12" width="24" height="18" rx="2" stroke="#404a3d" stroke-width="2"/><path d="M8 18H32" stroke="#404a3d" stroke-width="2"/><path d="M23 24H27" stroke="#404a3d" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Cartão de terceiro</h3>
+          <p>Utilize cartão de terceiro com autorizacão formal. Seguranca jurídica garantida para todos.</p>
+        </div>
+        <div class="parcela-card parcela-card--highlight">
+          <h3>Até 12x</h3>
+          <p class="parcela-big">12<span>x</span></p>
+          <p>Você visualiza o <strong>valor total</strong> antes de concluir. Sem surpresas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SEGURANCA ======================== -->
+  <section class="section section-green" id="seguranca">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title section-title--light">Seguranca e Transparência</h2>
+      </div>
+      <div class="security-grid">
+        <div class="security-item">
+          <div class="security-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2L2 8V16C2 23.18 8.27 29.85 16 32C23.73 29.85 30 23.18 30 16V8L16 2Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/><path d="M10 16L14 20L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>Nao concede empréstimo</p>
+        </div>
+        <div class="security-item">
+          <div class="security-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2L2 8V16C2 23.18 8.27 29.85 16 32C23.73 29.85 30 23.18 30 16V8L16 2Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/><path d="M10 16L14 20L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>Nao capta recursos públicos</p>
+        </div>
+        <div class="security-item">
+          <div class="security-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2L2 8V16C2 23.18 8.27 29.85 16 32C23.73 29.85 30 23.18 30 16V8L16 2Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/><path d="M10 16L14 20L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>Servico de consulta e quitacão</p>
+        </div>
+        <div class="security-item">
+          <div class="security-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2L2 8V16C2 23.18 8.27 29.85 16 32C23.73 29.85 30 23.18 30 16V8L16 2Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/><path d="M10 16L14 20L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>Pagamento via instituicão emissora do cartão</p>
+        </div>
+      </div>
+      <p class="security-note">Seus dados sao tratados com confidencialidade.</p>
+    </div>
+  </section>
+
+  <!-- ======================== SOBRE NOS ======================== -->
+  <section class="section section-light" id="sobre">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Sobre Nós</h2>
+        <p class="section-tagline">Trato Agro – Cuidando do Fazendeiro</p>
+      </div>
+      <div class="about-intro">
+        <p>A Trato Agro nasceu para simplificar a vida do produtor rural. Sabemos que o fazendeiro já enfrenta desafios suficientes no campo — clima, mercado, custo de insumos, crédito, gestao da propriedade. A burocracia nao pode ser mais um obstáculo.</p>
+        <p><strong>Nossa missao é usar tecnologia para transformar complexidade em solucao prática.</strong></p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-block">
+          <h3 class="about-block-title">Nossa Jornada</h3>
+          <p>A Trato Agro surgiu como uma plataforma de gestao voltada ao produtor rural, com foco em organizacão financeira, controle operacional, gestao estratégica e regularidade documental.</p>
+          <p>Ao longo dessa jornada, identificamos um problema recorrente: muitos produtores enfrentam dificuldades na regularizacão de obrigacões fiscais como o ITR, o CCIR e o CAR, seja por falta de tempo, acesso ou estrutura financeira.</p>
+          <p><em>Foi entao que evoluímos.</em></p>
+        </div>
+
+        <div class="about-block">
+          <h3 class="about-block-title">Nosso Propósito</h3>
+          <ul class="about-list">
+            <li>Facilita acesso ao crédito</li>
+            <li>Evita multas e restricões</li>
+            <li>Garante seguranca jurídica</li>
+            <li>Valoriza o patrimônio</li>
+          </ul>
+          <p>Mais do que oferecer um servico, oferecemos tranquilidade.</p>
+        </div>
+
+        <div class="about-block about-block--service">
+          <h3 class="about-block-title">O Servico: Regularizacão de ITR</h3>
+          <ol class="about-steps">
+            <li>O fazendeiro informa sua inscricão rural</li>
+            <li>Nós consultamos os débitos de ITR</li>
+            <li>Apresentamos o valor atualizado</li>
+            <li>Oferecemos parcelamento em até 12x no cartão</li>
+            <li>Realizamos a quitacão e enviamos o comprovante</li>
+          </ol>
+          <div class="about-tags">
+            <span class="about-tag">Sem filas</span>
+            <span class="about-tag">Sem burocracia</span>
+            <span class="about-tag">Sem deslocamento</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-security">
+        <h3 class="about-block-title">Seguranca e Transparência</h3>
+        <div class="about-security-grid">
+          <div class="about-security-item">Consulta estruturada de débitos</div>
+          <div class="about-security-item">Processo digital seguro</div>
+          <div class="about-security-item">Transparência no valor e parcelamento</div>
+          <div class="about-security-item">Envio de comprovantes oficiais</div>
+        </div>
+        <p class="about-commitment">Nosso compromisso é com clareza, responsabilidade e confianca.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== DEBITOS / ITR ======================== -->
+  <section class="section section-dark" id="debitos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Débitos</span>
+        <h2 class="section-title section-title--light" id="itr">ITR Atrasado em 2026: Como Regularizar sua Terra</h2>
+        <p class="section-desc section-desc--light">Se você tem uma propriedade rural, saiba que deixar o ITR atrasar é um risco alto: além das multas que crescem todo mês com a taxa Selic, você pode ficar "travado" para trabalhar.</p>
+      </div>
+
+      <div class="itr-grid">
+        <div class="itr-block">
+          <h3 class="itr-block-title">Por que nao posso deixar o ITR atrasado?</h3>
+          <p>Estar em dia com o ITR é garantir a saúde do seu negócio. Se o ITR estiver pendente, você NAO consegue:</p>
+          <ul class="itr-list">
+            <li>Pegar financiamento ou custeio em bancos, Pronaf ou cooperativas</li>
+            <li>Vender ou transferir o imóvel</li>
+            <li>Renovar o CCIR (Incra)</li>
+            <li>Fazer inventário ou partilha de bens</li>
+          </ul>
+        </div>
+
+        <div class="itr-block">
+          <h3 class="itr-block-title">Passo a Passo para Regularizar em 2026</h3>
+          <ol class="itr-steps">
+            <li><strong>Descubra a dívida</strong> – Acesse o portal e-CAC da Receita Federal ou peca para seu contador tirar o "Extrato de Débitos".</li>
+            <li><strong>Baixe o programa certo</strong> – Cada ano de atraso tem um programa específico. Se deve 2024 e 2025, precisará preencher as duas declaracões separadamente.</li>
+            <li><strong>Separe os documentos</strong> – Matrícula do imóvel, NIRF/CAFIR, dados do CAR e informacões sobre o que você produz.</li>
+            <li><strong>Envie e Pague</strong> – O programa gera o DARF já com multa e juros calculados.</li>
+          </ol>
+        </div>
+
+        <div class="itr-block">
+          <h3 class="itr-block-title">Posso Parcelar?</h3>
+          <p>Sim! A Receita Federal permite parcelamento em até 60 vezes, com parcela mínima de R$&nbsp;50,00, feito no e-CAC. E pela Trato Agro, oferecemos parcelamento facilitado em até 12x no cartão.</p>
+        </div>
+
+        <div class="itr-block">
+          <h3 class="itr-block-title">Casos Especiais</h3>
+          <ul class="itr-list">
+            <li><strong>Heranca/Inventário:</strong> O ITR deve ser feito no nome do "Espólio". Todos os herdeiros sao responsáveis.</li>
+            <li><strong>Terras Arrendadas:</strong> Mesmo que o contrato diga que o arrendatário paga, o dono é o responsável final.</li>
+            <li><strong>Áreas de Preservacão:</strong> Áreas de mata nativa podem reduzir o valor do imposto se estiverem corretas no CAR.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="itr-table-wrap">
+        <h3 class="itr-block-title">Documentacão para 2026</h3>
+        <table class="itr-table">
+          <thead>
+            <tr>
+              <th>Documento</th>
+              <th>Para que serve?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Matrícula Atualizada</td><td>Prova que a terra é sua.</td></tr>
+            <tr><td>CCIR/Incra</td><td>Necessário para cruzar os dados.</td></tr>
+            <tr><td>CAR</td><td>Informa as áreas de preservacão e uso do solo.</td></tr>
+            <tr><td>Laudo de VTN</td><td>Ajuda a nao pagar imposto a mais (ou a menos).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-cta">
+        <a href="#form-cta" class="btn btn-yellow">Consultar meus débitos agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FAQ ======================== -->
+  <section class="section section-light" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+      </div>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">É seguro informar minha inscricão rural?</summary>
+          <div class="faq-answer">
+            <p>Sim. A Trato Agro utiliza seus dados exclusivamente para consulta dos débitos vinculados ao imóvel rural. As informacões sao tratadas com confidencialidade e nao sao compartilhadas com terceiros para fins comerciais. Utilizamos processos digitais seguros e registro formal de autorizacão.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">A Trato Agro está me concedendo um empréstimo?</summary>
+          <div class="faq-answer">
+            <p>Nao. A Trato Agro presta um servico de consulta, intermediacão e quitacão de débitos fiscais. O pagamento pode ser realizado à vista ou parcelado no cartão de crédito. O parcelamento é processado pelo emissor do cartão.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Incide IOF nessa operacão?</summary>
+          <div class="faq-answer">
+            <p>A Trato Agro nao concede crédito próprio. Quando o pagamento é parcelado no cartão, o eventual IOF aplicável é de responsabilidade da instituicão emissora do cartão, conforme regras do próprio banco. Nao há cobranca de IOF pela Trato Agro.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Posso usar cartão de terceiro?</summary>
+          <div class="faq-answer">
+            <p>Sim. Caso utilize cartão de terceiro, será necessária autorizacão formal do titular do cartão e assinatura do instrumento contratual correspondente. Isso garante seguranca jurídica para todas as partes envolvidas.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Recebo comprovante da quitacão?</summary>
+          <div class="faq-answer">
+            <p>Sim. Após a confirmacão do pagamento, realizamos a quitacão oficial do débito e enviamos o comprovante ao e-mail informado.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Posso parcelar em até quantas vezes?</summary>
+          <div class="faq-answer">
+            <p>Oferecemos parcelamento em até 12x no cartão de crédito, conforme condicões apresentadas no momento da contratacão.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Isso regulariza minha propriedade para fins de crédito rural?</summary>
+          <div class="faq-answer">
+            <p>A regularizacão do ITR é um dos requisitos importantes para diversas operacões de crédito rural e regularidade fiscal do imóvel. Com a quitacão do débito, você passa a estar regular em relacão àquele tributo.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">E se eu já tiver parcelamento ativo na Receita?</summary>
+          <div class="faq-answer">
+            <p>Nesse caso, analisamos a situacão específica antes de qualquer contratacão. A Trato Agro atua exclusivamente na quitacão de débitos passíveis de pagamento.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">O processo é presencial?</summary>
+          <div class="faq-answer">
+            <p>Nao. Todo o processo é digital, simples e rápido.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Há taxa escondida?</summary>
+          <div class="faq-answer">
+            <p>Nao. Antes de concluir a contratacão, você visualizará: valor total, parcelas, taxa aplicada e custo final. Transparência total.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Posso cancelar após pagar?</summary>
+          <div class="faq-answer">
+            <p>Após a quitacão da guia junto ao órgao competente, o servico é considerado concluído. Caso haja necessidade de esclarecimento, nossa equipe presta suporte.</p>
+          </div>
+        </details>
+
+      </div>
+      <div class="section-cta">
+        <a href="#form-cta" class="btn btn-primary">Consultar débitos agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PROVA SOCIAL ======================== -->
+  <section class="section section-yellow" id="prova-social">
+    <div class="container">
+      <div class="social-proof-wrap">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="social-quote">
+          "Regularizei meu ITR em minutos, sem sair da fazenda."
+        </blockquote>
+        <p class="social-note">— Produtor Rural, Mato Grosso</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CTA FINAL ======================== -->
+  <section class="section section-cta-final" id="cta-final">
+    <div class="container">
+      <h2 class="cta-title">Regularize hoje. Evite problemas amanhã.</h2>
+      <p class="cta-sub">ITR em atraso gera multa. Propriedade regular gera tranquilidade.</p>
+      <a href="#form-cta" class="btn btn-yellow btn-lg">Regularizar meu ITR agora</a>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-trato">Trato</span><span class="logo-agro">Agro</span>
+        <p>Cuidando do fazendeiro.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#itr">ITR</a>
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <p class="footer-legal">A Trato Agro nao concede crédito próprio. Os servicos prestados sao de consultoria e intermediacão para quitacão de débitos fiscais. O parcelamento é processado pelo emissor do cartão de crédito.</p>
+      <p class="footer-copy">&copy; 2026 Trato Agro. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
