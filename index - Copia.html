@@ -54,136 +54,73 @@
 
       <!-- FORM CARD -->
       <div class="form-card" id="form-cta">
+        <h2 class="form-title">Consulte Grátis seus débitos de ITR</h2>
+        <p class="form-sub">Com o Trato, você consulta todos os débitos passados do ITR por meio da sua Inscricão Rural e paga os débitos de forma simples.</p>
+        <form class="form-body" id="consultaForm" novalidate>
 
-        <!-- Progress bar -->
-        <div class="fc-progress" id="fcProgress">
-          <div class="fc-progress-bar" id="fcProgressBar" style="width:25%"></div>
-        </div>
+          <!-- Tipo de devedor -->
+          <div class="form-group">
+            <label class="form-label-group">Tipo de devedor</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="tipoDevedor" value="pf" id="tipoPF" checked />
+                <span class="radio-custom"></span>
+                Pessoa Física
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="tipoDevedor" value="pj" id="tipoPJ" />
+                <span class="radio-custom"></span>
+                Pessoa Jurídica
+              </label>
+            </div>
+          </div>
 
-        <!-- ── TELA 1: Formulário ── -->
-        <div id="screenForm">
-          <h2 class="form-title">Consulte Grátis seus débitos de ITR</h2>
-          <p class="form-sub">Com o Trato, você consulta todos os débitos passados do ITR por meio da sua Inscricão Rural e paga os débitos de forma simples.</p>
-          <form class="form-body" id="consultaForm" novalidate>
-
-            <!-- Tipo de devedor -->
+          <!-- Campos Pessoa Física -->
+          <div id="fieldsPF">
             <div class="form-group">
-              <label class="form-label-group">Tipo de devedor</label>
-              <div class="radio-group">
-                <label class="radio-option">
-                  <input type="radio" name="tipoDevedor" value="pf" id="tipoPF" checked />
-                  <span class="radio-custom"></span>
-                  Pessoa Física
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="tipoDevedor" value="pj" id="tipoPJ" />
-                  <span class="radio-custom"></span>
-                  Pessoa Jurídica
-                </label>
-              </div>
-            </div>
-
-            <!-- Campos Pessoa Física -->
-            <div id="fieldsPF">
-              <div class="form-group">
-                <label for="nomePF">Nome completo</label>
-                <input type="text" id="nomePF" name="nomePF" placeholder="Seu nome completo" />
-                <span class="field-error" id="nomePFError">Informe o nome completo.</span>
-              </div>
-              <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" />
-                <span class="field-error" id="cpfError">Informe um CPF válido.</span>
-              </div>
-            </div>
-
-            <!-- Campos Pessoa Jurídica -->
-            <div id="fieldsPJ" style="display:none">
-              <div class="form-group">
-                <label for="cnpj">CNPJ</label>
-                <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" inputmode="numeric" />
-                <span class="field-error" id="cnpjError">Informe um CNPJ válido.</span>
-              </div>
-            </div>
-
-            <!-- Campos comuns -->
-            <div class="form-group">
-              <label for="celular">Celular</label>
-              <input type="tel" id="celular" name="celular" placeholder="(00) 00000-0000" />
-              <span class="field-error" id="celularError">Informe um celular válido.</span>
+              <label for="nomePF">Nome completo</label>
+              <input type="text" id="nomePF" name="nomePF" placeholder="Seu nome completo" />
+              <span class="field-error" id="nomePFError">Informe o nome completo.</span>
             </div>
             <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="seu@email.com.br" />
-              <span class="field-error" id="emailError">Informe um e-mail válido.</span>
+              <label for="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" />
+              <span class="field-error" id="cpfError">Informe um CPF válido.</span>
             </div>
+          </div>
 
-            <p class="form-security-note">
-              <svg width="13" height="16" viewBox="0 0 13 16" fill="none"><path d="M6.5 0L0 3V8C0 11.55 2.78 14.88 6.5 16C10.22 14.88 13 11.55 13 8V3L6.5 0Z" fill="#5b8c51"/></svg>
-              Para sua seguranca enviaremos um código no seu celular para liberar a consulta.
-            </p>
-            <button type="submit" class="btn btn-primary btn-block">Consultar Débitos</button>
-          </form>
-        </div>
-
-        <!-- ── TELA 2: OTP ── -->
-        <div id="screenOTP" style="display:none">
-          <div class="otp-header">
-            <div class="otp-icon">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="14" fill="#5b8c51"/><path d="M8 14.5L12 18.5L20 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <!-- Campos Pessoa Jurídica -->
+          <div id="fieldsPJ" style="display:none">
+            <div class="form-group">
+              <label for="cnpj">CNPJ</label>
+              <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" inputmode="numeric" />
+              <span class="field-error" id="cnpjError">Informe um CNPJ válido.</span>
             </div>
-            <h2 class="form-title">Código de segurança</h2>
-            <p class="form-sub">Enviamos um código de 6 dígitos para o celular <strong id="otpPhone"></strong>. Digite abaixo para liberar a consulta.</p>
           </div>
-          <div class="otp-inputs" id="otpInputs">
-            <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" />
-            <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" />
-            <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" />
-            <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" />
-            <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" />
-            <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" />
+
+          <!-- Campos comuns -->
+          <div class="form-group">
+            <label for="celular">Celular</label>
+            <input type="tel" id="celular" name="celular" placeholder="(00) 00000-0000" />
+            <span class="field-error" id="celularError">Informe um celular válido.</span>
           </div>
-          <span class="field-error" id="otpError" style="display:block;text-align:center;margin-bottom:0.5rem">Código inválido. Tente novamente.</span>
-          <button class="btn btn-primary btn-block" id="btnConfirmOTP">Verificar código</button>
-          <p class="otp-resend">Nao recebeu? <button type="button" id="btnResendOTP" class="otp-resend-btn">Reenviar código</button> <span id="otpTimer"></span></p>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com.br" />
+            <span class="field-error" id="emailError">Informe um e-mail válido.</span>
+          </div>
+
+          <p class="form-security-note">
+            <svg width="13" height="16" viewBox="0 0 13 16" fill="none"><path d="M6.5 0L0 3V8C0 11.55 2.78 14.88 6.5 16C10.22 14.88 13 11.55 13 8V3L6.5 0Z" fill="#5b8c51"/></svg>
+            Você receberá um código que garantirá a segurança dos seus dados.
+          </p>
+          <button type="submit" class="btn btn-primary btn-block">Consultar Débitos</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">&#10003;</div>
+          <h3>Solicitacão enviada!</h3>
+          <p>Nossa equipe entrará em contato em breve com seus débitos de ITR.</p>
         </div>
-
-        <!-- ── TELA 3: Loading ── -->
-        <div id="screenLoading" style="display:none">
-          <div class="loading-wrap">
-            <div class="loading-spinner"></div>
-            <p class="loading-label" id="loadingLabel">Consultando bases da Receita Federal...</p>
-            <p class="loading-sub">Isso levará apenas alguns segundos.</p>
-          </div>
-        </div>
-
-        <!-- ── TELA 4: Resultado ── -->
-        <div id="screenResult" style="display:none">
-          <div class="result-header">
-            <div class="result-alert-icon">!</div>
-            <h2 class="form-title result-title">Encontramos débitos de ITR</h2>
-            <p class="form-sub">vinculados ao seu CPF/CNPJ</p>
-          </div>
-
-          <div class="result-box">
-            <p class="result-box-label">Total em aberto</p>
-            <p class="result-total">R$ 16.753,33</p>
-            <p class="result-count">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#dc3545"/><path d="M7 4V7.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="9.5" r="0.75" fill="white"/></svg>
-              2 débitos encontrados
-            </p>
-          </div>
-
-          <div class="result-cta-wrap">
-            <p class="result-cta-text">Você possui débitos de ITR em aberto. Com o Trato você pode regularizar agora mesmo e parcelar no cartão.</p>
-            <div class="result-btns">
-              <button class="btn btn-outline-dark btn-block" id="btnVerDetalhes">Ver detalhes</button>
-              <button class="btn btn-primary btn-block" id="btnRegularizar">Regularizar débitos</button>
-            </div>
-            <button class="btn btn-yellow btn-block btn-parcela" id="btnParcela">Ver opções de parcelamento</button>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
